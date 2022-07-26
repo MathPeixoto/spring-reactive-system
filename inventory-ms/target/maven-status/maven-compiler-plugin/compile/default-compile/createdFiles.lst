@@ -1,9 +1,0 @@
-com/mpeixoto/inventory/domain/LineItem.class
-com/mpeixoto/inventory/domain/Product.class
-com/mpeixoto/inventory/repository/ProductRepository.class
-com/mpeixoto/inventory/domain/Order.class
-com/mpeixoto/inventory/domain/OrderStatus.class
-com/mpeixoto/inventory/utils/ObjectIdSerializer.class
-com/mpeixoto/inventory/services/ProductService.class
-com/mpeixoto/inventory/controller/ProductController.class
-com/mpeixoto/inventory/InventoryApplication.class

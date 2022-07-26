@@ -1,9 +1,0 @@
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/domain/LineItem.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/domain/Product.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/services/ProductService.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/controller/ProductController.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/repository/ProductRepository.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/domain/Order.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/domain/OrderStatus.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/InventoryApplication.java
-/home/matheus/Projetos/Portfolio/reactive-system/inventory-ms/src/main/java/com/mpeixoto/inventory/utils/ObjectIdSerializer.java
