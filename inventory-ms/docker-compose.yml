@@ -1,29 +1,27 @@
 services:
-  mongo-ms:
+  mongo-inventory:
     image: mongo:latest
-    container_name: mongo-ms
+    container_name: mongo-inventory
     restart: always
     environment:
       MONGO_INITDB_DATABASE: inventory
-#      MONGO_INITDB_ROOT_USERNAME: root
-#      MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - "27017:27017"
     networks:
       - inventory-ms-net
 
-#  inventory-ms:
-#    image: inventory-ms
-#    container_name: inventory-ms
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    ports:
-#      - "8081:8081"
-#    networks:
-#      - inventory-ms-net
-#    depends_on:
-#      - "mongo-ms"
+  inventory-ms:
+    image: inventory-ms
+    container_name: inventory-ms
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - inventory-ms-net
+    depends_on:
+      - "mongo-inventory"
 
 networks:
   inventory-ms-net:
