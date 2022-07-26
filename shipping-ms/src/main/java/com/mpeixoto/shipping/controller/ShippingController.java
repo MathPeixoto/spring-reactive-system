@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/products")
+@RequestMapping("/api/shipments")
 public class ShippingController {
   private final ShippingService shippingService;
 

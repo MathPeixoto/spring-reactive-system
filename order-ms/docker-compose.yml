@@ -1,0 +1,28 @@
+services:
+  mongo-order-ms:
+    image: mongo:latest
+    container_name: mongo-order-ms
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: order
+    ports:
+      - "27017:27017"
+    networks:
+      - order-ms-net
+
+  order-ms:
+    image: order-ms
+    container_name: order-ms
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - order-ms-net
+    depends_on:
+      - "mongo-order-ms"
+
+networks:
+  order-ms-net:
+    driver: bridge
