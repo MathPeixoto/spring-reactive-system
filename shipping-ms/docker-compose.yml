@@ -1,7 +1,7 @@
 services:
-  mongo-ms:
+  mongo-shipping-ms:
     image: mongo:latest
-    container_name: mongo-ms
+    container_name: mongo-shipping-ms
     restart: always
     environment:
       MONGO_INITDB_DATABASE: shipping
@@ -21,7 +21,7 @@ services:
 #    networks:
 #      - shipping-ms-net
 #    depends_on:
-#      - "mongo-ms"
+#      - "mongo-shipping-ms"
 
 networks:
   shipping-ms-net:
