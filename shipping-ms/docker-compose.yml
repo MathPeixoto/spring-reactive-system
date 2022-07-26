@@ -1,0 +1,28 @@
+services:
+  mongo-ms:
+    image: mongo:latest
+    container_name: mongo-ms
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: shipping
+    ports:
+      - "27017:27017"
+    networks:
+      - shipping-ms-net
+
+#  shipping-ms:
+#    image: shipping-ms
+#    container_name: shipping-ms
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8081:8081"
+#    networks:
+#      - shipping-ms-net
+#    depends_on:
+#      - "mongo-ms"
+
+networks:
+  shipping-ms-net:
+    driver: bridge
