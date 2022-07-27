@@ -7,6 +7,7 @@ Example:
 
 
 
+
 How to curl a service: `sudo curl $(minikube service service-name --url)/path`
 Example:
 
