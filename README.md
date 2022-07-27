@@ -5,6 +5,8 @@ Example:
 
 `kubectl expose deployment inventory-deployment --type=NodePort --name=inventory-service`
 
+
+
 How to curl a service: `sudo curl $(minikube service service-name --url)/path`
 Example:
 
