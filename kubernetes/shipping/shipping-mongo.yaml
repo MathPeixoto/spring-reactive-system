@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo-shipping
+  name: mongo-shipping-service
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+    nodePort: 32000
+  selector:
+    app: mongo-shipping
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-shipping
+  name: mongo-shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-shipping
+  template:
+    metadata:
+      labels:
+        app: mongo-shipping
+    spec:
+      containers:
+      - image: mongo:latest
+        name: mongo-shipping
+        env:
+        - name: MONGO_INITDB_DATABASE
+          value: 'shipping'

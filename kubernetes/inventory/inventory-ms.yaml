@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service
+spec:
+  type: NodePort
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+    nodePort: 31999
+  selector:
+    app: inventory-ms
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: inventory-ms-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-ms
+  template: 
+    metadata: 
+      labels: 
+        app: inventory-ms
+    spec: 
+      containers:
+      - name: inventory-ms-container
+        image: mathpeixoto/inventory:0.0.1
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: docker
+        ports: 
+        - containerPort: 8081

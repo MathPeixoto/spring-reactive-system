@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: shipping-deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      name: shipping-deployment
+  template: 
+    metadata: 
+      labels: 
+        name: shipping-deployment
+    spec: 
+      containers:
+      - name: shipping-ms
+        image: mathpeixoto/shipping:0.0.1
+        ports: 
+        - containerPort: 8082
+
