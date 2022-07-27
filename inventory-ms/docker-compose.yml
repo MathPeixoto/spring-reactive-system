@@ -1,7 +1,7 @@
 services:
   mongo-inventory:
     image: mongo:latest
-    container_name: mongo-inventory
+    container_name: mongo-inventory-service
     restart: always
     environment:
       MONGO_INITDB_DATABASE: inventory
@@ -11,13 +11,12 @@ services:
       - inventory-ms-net
 
   inventory-ms:
-    image: inventory-ms
+    image: mathpeixoto/inventory:0.0.1
     container_name: inventory-ms
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8081:8081"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
     networks:
       - inventory-ms-net
     depends_on:

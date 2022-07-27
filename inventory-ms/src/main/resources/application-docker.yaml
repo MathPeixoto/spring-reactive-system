@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://mongo-inventory:27017/inventory
+      uri: mongodb://mongo-inventory-service/inventory
 
   kafka:
     bootstrap-servers: kafka-broker:9092
