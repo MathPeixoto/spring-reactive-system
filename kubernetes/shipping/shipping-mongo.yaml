@@ -36,3 +36,7 @@ spec:
         env:
         - name: MONGO_INITDB_DATABASE
           value: 'shipping'
+        resources:
+          limits:
+            memory: 1G
+            cpu: "1"

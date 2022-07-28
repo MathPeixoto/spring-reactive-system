@@ -1,20 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8082
+      protocol: TCP
+      targetPort: 8082
+      nodePort: 31996
+  selector:
+    app: shipping-ms
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: shipping-deployment
 spec: 
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      name: shipping-deployment
+      app: shipping-ms
   template: 
     metadata: 
       labels: 
-        name: shipping-deployment
+        app: shipping-ms
     spec: 
       containers:
       - name: shipping-ms
         image: mathpeixoto/shipping:0.0.1
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: docker
         ports: 
         - containerPort: 8082
-
+        resources:
+          limits:
+            memory: 1G
+            cpu: "1"
