@@ -69,7 +69,7 @@ spec:
     spec:
       containers:
         - name: order-ms-container
-          image: mathpeixoto/order:0.0.1
+          image: mathpeixoto/order:0.0.5
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
@@ -110,7 +110,7 @@ spec:
     spec:
       containers:
         - name: shipping-ms
-          image: mathpeixoto/shipping:0.0.1
+          image: mathpeixoto/shipping:0.0.4
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
