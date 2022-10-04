@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: 8081
+      nodePort: 31999
+  selector:
+    app: inventory-ms
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-ms-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-ms
+  template:
+    metadata:
+      labels:
+        app: inventory-ms
+    spec:
+      containers:
+        - name: inventory-ms-container
+          image: mathpeixoto/inventory:0.0.1
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+          ports:
+            - containerPort: 8081
+          resources:
+            limits:
+              memory: 1G
+              cpu: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 31997
+  selector:
+    app: order-ms
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-ms-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-ms
+  template:
+    metadata:
+      labels:
+        app: order-ms
+    spec:
+      containers:
+        - name: order-ms-container
+          image: mathpeixoto/order:0.0.1
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 1G
+              cpu: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8082
+      protocol: TCP
+      targetPort: 8082
+      nodePort: 31996
+  selector:
+    app: shipping-ms
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shipping-ms
+  template:
+    metadata:
+      labels:
+        app: shipping-ms
+    spec:
+      containers:
+        - name: shipping-ms
+          image: mathpeixoto/shipping:0.0.1
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+          ports:
+            - containerPort: 8082
+          resources:
+            limits:
+              memory: 1G
+              cpu: "1"
+

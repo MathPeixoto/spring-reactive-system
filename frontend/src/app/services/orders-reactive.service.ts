@@ -1,44 +1,45 @@
 import {Injectable, NgZone} from '@angular/core';
 import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
-const EventSource: any = window['EventSource'];
+const EventSource: any = window.EventSource;
 
 @Injectable()
 export class OrdersReactiveService {
 
-  url: string = 'http://localhost:8080/api/orders'
+  url = environment.ORDER_URL + '/orders';
 
-  orders: string[] = []
+  orders: string[] = [];
 
+  // tslint:disable-next-line:variable-name
   constructor(private _zone: NgZone) {
   }
 
   getOrderStream() {
-    this.orders = []
+    this.orders = [];
     return Observable.create((observer: any) => {
-      let eventSource = new EventSource(this.url)
+      const eventSource = new EventSource(this.url);
       eventSource.onmessage = (event: any) => {
-        console.log('Received event: ', event)
-        let json = JSON.parse(event.data)
+        console.log('Received event: ', event);
+        const json = JSON.parse(event.data);
         this.orders.push(json);
         this._zone.run(() => {
-          observer.next(this.orders)
-        })
-      }
+          observer.next(this.orders);
+        });
+      };
       eventSource.onerror = (error: any) => {
         if (eventSource.readyState === 0) {
-          console.log('The stream has been closed by the server.')
-          eventSource.close()
+          console.log('The stream has been closed by the server.');
+          eventSource.close();
           this._zone.run(() => {
-            observer.complete()
-          })
+            observer.complete();
+          });
         } else {
           this._zone.run(() => {
-            observer.error('EventSource error: ' + error)
-          })
+            observer.error('EventSource error: ' + error);
+          });
         }
-      }
-    })
+      };
+    });
   }
-
 }

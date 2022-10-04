@@ -4,7 +4,8 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/order
+#      uri: mongodb://localhost:27017/order
+      uri: mongodb://192.168.49.2:31998/order
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -25,3 +26,7 @@ spring:
             value:
               default:
                 type: com.mpeixoto.order.domain.Order
+
+gateway:
+  inventory-url: "http://192.168.49.2:31999/api/products"
+  shipping-url: "http://192.168.49.2:31996/api/shipments"

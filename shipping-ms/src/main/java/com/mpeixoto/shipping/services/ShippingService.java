@@ -19,8 +19,8 @@ public class ShippingService {
 
   public Order handleOrder(Order order) {
     LocalDate shippingDate;
-    if (LocalTime.now().isAfter(LocalTime.parse("10:00"))
-        && LocalTime.now().isBefore(LocalTime.parse("18:00"))) {
+    if (LocalTime.now().isAfter(LocalTime.parse("00:00"))
+        && LocalTime.now().isBefore(LocalTime.parse("23:59"))) {
       shippingDate = LocalDate.now().plusDays(1);
     } else {
       throw new RuntimeException("The current time is off the limits to place order.");

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 interface Orders {
   id?: string | number;
@@ -8,16 +9,15 @@ interface Orders {
   responseMessage?: string;
 }
 
-
 @Injectable()
 export class OrdersBlockingService {
 
-  url: string = 'http://localhost:8080/api/orders'
+  url = environment.ORDER_URL + '/orders';
 
-  constructor(private http: HttpClient) {}
-
-  getOrders(): Observable<Orders[]> {
-    return this.http.get<Orders[]>(this.url)
+  constructor(private http: HttpClient) {
   }
 
+  getOrders(): Observable<Orders[]> {
+    return this.http.get<Orders[]>(this.url);
+  }
 }

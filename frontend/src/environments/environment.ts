@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  INVENTORY_URL: 'http://192.168.49.2:31999/api',
+  ORDER_URL: 'http://192.168.49.2:31997/api',
+  SHIPPING_URL: 'http://192.168.49.2:31996/api',
 };
 
 /*

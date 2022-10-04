@@ -3,6 +3,7 @@ package com.mpeixoto.order.domain;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mpeixoto.order.utils.ObjectIdSerializer;
 import java.time.LocalDate;
+import java.util.List;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -22,6 +23,7 @@ public class Order {
   private LocalDate shippingDate;
   private OrderStatus orderStatus;
   private String responseMessage;
+  private List<LineItem> lineItems;
 
   public Order setShippingDate(LocalDate shippingDate) {
     this.shippingDate = shippingDate;

@@ -25,3 +25,7 @@ spring:
             value:
               default:
                 type: com.mpeixoto.order.domain.Order
+
+gateway:
+  inventory-url: "inventory-service/api/products"
+  shipping-url: "shipping-service/api/shipments"
