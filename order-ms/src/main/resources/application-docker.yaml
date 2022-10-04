@@ -27,5 +27,5 @@ spring:
                 type: com.mpeixoto.order.domain.Order
 
 gateway:
-  inventory-url: "inventory-service/api/products"
-  shipping-url: "shipping-service/api/shipments"
+  inventory-url: "http://inventory-service:8081/api/products"
+  shipping-url: "http://shipping-service:8082/api/shipments"
